@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\Connect">
+      <UniqueIdentifier>{4f11b132-f517-4b74-bda8-ce4db35cc9b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Connect">
+      <UniqueIdentifier>{0803a0a5-c516-4e0b-81c3-60339869859c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MemoryShare">
+      <UniqueIdentifier>{ed23ff18-7fd4-4c07-878a-cf8ae15031df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MemoryShare">
+      <UniqueIdentifier>{80f533f3-a441-40bd-9ff2-223f38790c9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Packet">
+      <UniqueIdentifier>{f4ab538a-cb92-4c2e-b572-4cddab6d8ee4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Packet">
+      <UniqueIdentifier>{19b02ef3-fa36-4880-b05e-ae31fc7495c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Define">
+      <UniqueIdentifier>{f85928b5-e522-4103-be13-5813158459e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Define">
+      <UniqueIdentifier>{67029c79-68a0-4912-bbae-395bbf7aa17f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Tool">
+      <UniqueIdentifier>{273b60a7-71ad-4d3a-ad7e-f41cb17324c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Tool">
+      <UniqueIdentifier>{96c95bd0-1606-4348-971d-2c6280725af3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\DataManager">
+      <UniqueIdentifier>{65e629ac-995d-465e-9dca-6195d202eb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\DataManager">
+      <UniqueIdentifier>{9d49f2e8-608e-4d40-9ece-10003dea79bb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="PLCcommunicationDll.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="res\PLCcommunicationDll.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PLCcommunicationDll.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCConnection.cpp">
+      <Filter>源文件\Connect</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPConnection.cpp">
+      <Filter>源文件\Connect</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryShare.cpp">
+      <Filter>源文件\MemoryShare</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCReadDataPacket.cpp">
+      <Filter>源文件\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCDataPacket.cpp">
+      <Filter>源文件\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCDataPacketParam.cpp">
+      <Filter>源文件\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCModuleDefine.cpp">
+      <Filter>源文件\Define</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCTool.cpp">
+      <Filter>源文件\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCDataManager.cpp">
+      <Filter>源文件\DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCDataPacketManager.cpp">
+      <Filter>源文件\DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCWriteDataPacket.cpp">
+      <Filter>源文件\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCOrderDataPacket.cpp">
+      <Filter>源文件\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCDataPacketManager1221.cpp">
+      <Filter>源文件\DataManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PLCcommunicationDll.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCConnection.h">
+      <Filter>头文件\Connect</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPConnection.h">
+      <Filter>头文件\Connect</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryShare.h">
+      <Filter>头文件\MemoryShare</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCReadDataPacket.h">
+      <Filter>头文件\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCDataPacket.h">
+      <Filter>头文件\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCDataPacketParam.h">
+      <Filter>头文件\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCModuleDefine.h">
+      <Filter>头文件\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCTool.h">
+      <Filter>头文件\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCDataManager.h">
+      <Filter>头文件\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCDataPacketManager.h">
+      <Filter>头文件\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCWriteDataPacket.h">
+      <Filter>头文件\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCOrderDataPacket.h">
+      <Filter>头文件\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCDataPacketManager1221.h">
+      <Filter>头文件\DataManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PLCcommunicationDll.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -5,7 +5,7 @@
  * 创建者：刘冉
  * 创建时间：2024-7-27
  * 版本：V1.0.0
- * 描述：1221 数据包管理类
+ * 描述：UDP 数据包管理类 初始化需要配置接收、发送的IP地址和端口号
  *
  * ----------------------------------------------------------------
  * 修改人：
@@ -17,11 +17,11 @@
 #pragma once
 #include "PLCDataPacketManager.h"
 
-class CPLCDataPacketManager1221: public CPLCDataPacketManager
+class CPLCUDPDataPacketManager: public CPLCDataPacketManager
 {
 public:
-	CPLCDataPacketManager1221(void);
-	~CPLCDataPacketManager1221(void);
+	CPLCUDPDataPacketManager(PLCConnectInfo receiveInfo, PLCConnectInfo sendInfo);
+	~CPLCUDPDataPacketManager(void);
 
 	/**
 	 * 功能：更新数据
@@ -81,5 +81,7 @@ private:
 	// 是否为首次发送
 	bool m_isFirst;
 	int m_iTime;
+	
+	PLCConnectInfo m_sReceiveInfo;
+	PLCConnectInfo m_sSendInfo;
 };
-

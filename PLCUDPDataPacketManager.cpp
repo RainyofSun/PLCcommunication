@@ -1,12 +1,16 @@
 #include "StdAfx.h"
-#include "PLCDataPacketManager1221.h"
+#include "PLCUDPDataPacketManager.h"
 #include "UDPConnection.h"
 
 // 心跳最大断开数
 const int HEART_BREAK_MAX_NUMBER = 100;
 
-CPLCDataPacketManager1221::CPLCDataPacketManager1221(void)
+CPLCUDPDataPacketManager::CPLCUDPDataPacketManager(PLCConnectInfo receiveInfo, PLCConnectInfo sendInfo)
 {
+
+	m_sReceiveInfo = receiveInfo;
+	m_sSendInfo = sendInfo;
+
 	m_iTime = 0;
 	const bool is1 = initConnection();
 	const bool is2 = initPacket();
@@ -18,11 +22,11 @@ CPLCDataPacketManager1221::CPLCDataPacketManager1221(void)
 }
 
 
-CPLCDataPacketManager1221::~CPLCDataPacketManager1221(void)
+CPLCUDPDataPacketManager::~CPLCUDPDataPacketManager(void)
 {
 }
 
-bool CPLCDataPacketManager1221::update()
+bool CPLCUDPDataPacketManager::update()
 {
 	// 更新读取数据包
 	if (m_pReadDataPacket)
@@ -84,7 +88,7 @@ bool CPLCDataPacketManager1221::update()
 	return true;
 }
 
-bool CPLCDataPacketManager1221::connectPLC()
+bool CPLCUDPDataPacketManager::connectPLC()
 {
 	if (!m_bIsInitialized)
 	{
@@ -107,25 +111,23 @@ bool CPLCDataPacketManager1221::connectPLC()
 	return m_bIsConnectPLC;
 }
 
-bool CPLCDataPacketManager1221::initConnection()
+bool CPLCUDPDataPacketManager::initConnection()
 {
+	if (m_sReceiveInfo.port == 0 || m_sSendInfo.port == 0)
+	{
+		return false;
+	}
+
 	m_pSendConnection = new CUDPConnection();
 	m_pReceiveConnection = new CUDPConnection();
 
-	PLCConnectInfo sendInfo;
-	sendInfo.ip = UDP_SEND_IP;
-	sendInfo.port = UDP_PORT;
-	m_pSendConnection->prepareToConnect(PLC_UDP, sendInfo);
-
-	PLCConnectInfo receiveInfo;
-	receiveInfo.ip = UDP_RECEIVE_IP;
-	receiveInfo.port = UDP_PORT;
-	m_pReceiveConnection->prepareToConnect(PLC_UDP, receiveInfo);
+	m_pSendConnection->prepareToConnect(PLC_UDP, m_sSendInfo);
+	m_pReceiveConnection->prepareToConnect(PLC_UDP, m_sReceiveInfo);
 
 	return ((nullptr != m_pSendConnection) && (nullptr != m_pReceiveConnection));
 }
 
-bool CPLCDataPacketManager1221::initPacket()
+bool CPLCUDPDataPacketManager::initPacket()
 {
 	m_pOrderPacket = new CPLCOrderDataPacket(m_pSendConnection);
 	const bool is1 = createWritePacket(write_packet_id_1);
@@ -135,7 +137,7 @@ bool CPLCDataPacketManager1221::initPacket()
 	return (m_pOrderPacket && is1 && is2 && m_pReadDataPacket);
 }
 
-bool CPLCDataPacketManager1221::createWritePacket(int nPacketId)
+bool CPLCUDPDataPacketManager::createWritePacket(int nPacketId)
 {
 	bool isSuccess = false;
 	if (m_writeDataPacketMap.find(nPacketId) == m_writeDataPacketMap.end())
@@ -164,7 +166,7 @@ bool CPLCDataPacketManager1221::createWritePacket(int nPacketId)
 	return isSuccess;
 }
 
-bool CPLCDataPacketManager1221::firstSend()
+bool CPLCUDPDataPacketManager::firstSend()
 {
 	bool isFinish = false;
 	static int nCount = 0;
@@ -195,7 +197,7 @@ bool CPLCDataPacketManager1221::firstSend()
 		isFinish = true;
 		m_bIsFinishFirstCommunication = true;
 
-		HWND pWnd = ::FindWindow("DICING", NULL);
+		HWND pWnd = ::FindWindow("COMMUNICATION", NULL);
 		if (pWnd != NULL)
 		{	
 			CString strMessage = "Connected";
@@ -209,7 +211,7 @@ bool CPLCDataPacketManager1221::firstSend()
 	return isFinish;
 }
 
-bool CPLCDataPacketManager1221::isDisconnectPLC()
+bool CPLCUDPDataPacketManager::isDisconnectPLC()
 {
 	static int count = 0;
 	bool bIsDisconnect = false;
@@ -225,7 +227,7 @@ bool CPLCDataPacketManager1221::isDisconnectPLC()
 		if (count++ > HEART_BREAK_MAX_NUMBER)
 		{
 			bIsDisconnect = true;
-			HWND pWnd = ::FindWindow("DICING", NULL);
+			HWND pWnd = ::FindWindow("COMMUNICATION", NULL);
 			if (pWnd != NULL)
 			{
 				CString strMessage = "Disconnect";

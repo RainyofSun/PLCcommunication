@@ -49,6 +49,12 @@
     <Filter Include="头文件\DataManager">
       <UniqueIdentifier>{9d49f2e8-608e-4d40-9ece-10003dea79bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\CommunicationManager">
+      <UniqueIdentifier>{0d2e58d8-909f-452c-8a14-5d1ce5066423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\CommunicationManager">
+      <UniqueIdentifier>{d62c4854-a023-47d5-8234-7fde35ca8750}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -102,8 +108,14 @@
     <ClCompile Include="PLCOrderDataPacket.cpp">
       <Filter>源文件\Packet</Filter>
     </ClCompile>
-    <ClCompile Include="PLCDataPacketManager1221.cpp">
+    <ClCompile Include="PLCCommunicationManager.cpp">
+      <Filter>源文件\CommunicationManager</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCUDPDataPacketManager.cpp">
       <Filter>源文件\DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCModule.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,8 +167,14 @@
     <ClInclude Include="PLCOrderDataPacket.h">
       <Filter>头文件\Packet</Filter>
     </ClInclude>
-    <ClInclude Include="PLCDataPacketManager1221.h">
+    <ClInclude Include="PLCCommunicationManager.h">
+      <Filter>头文件\CommunicationManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCUDPDataPacketManager.h">
       <Filter>头文件\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCModule.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

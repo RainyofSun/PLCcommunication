@@ -1,5 +1,31 @@
 #pragma once
 
+/// PLC 协议类型
+enum PLCProtocolType 
+{
+	PLC_TCP = 0,
+	PLC_UDP,
+	PLC_MODBUS
+};
+
+/// PLC 连接信息
+struct PLCConnectInfo
+{
+	CString ip;
+	int port;
+
+	void initialization() 
+	{
+		ip = "";
+		port = 0;
+	}
+
+	PLCConnectInfo()
+	{
+		initialization();
+	}
+};
+
 // *****UDP IP和端口号*****
 #define UDP_SEND_IP "192.168.1.250"			// UDP发送IP
 #define UDP_RECEIVE_IP "192.168.1.20"		// UDP接收IP

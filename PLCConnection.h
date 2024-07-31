@@ -1,23 +1,9 @@
 #pragma once
-/// PLC 协议类型
-enum PLCProtocolType 
-{
-	PLC_TCP,
-	PLC_UDP,
-	PLC_MODBUS
-};
-
-/// PLC 连接信息
-struct PLCConnectInfo
-{
-	CString ip;
-	int port;
-};
-
+#include "PLCModuleDefine.h"
 /**
 PLC 连接基类，负责PLC的连接、状态监控、数据收发
 */
-class DLL_EXPORT CPLCConnection
+class CPLCConnection
 {
 public:
 	CPLCConnection(void);

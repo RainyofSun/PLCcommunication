@@ -101,16 +101,18 @@
   <ItemGroup>
     <ClCompile Include="MemoryShare.cpp" />
     <ClCompile Include="PLCcommunicationDll.cpp" />
+    <ClCompile Include="PLCCommunicationManager.cpp" />
     <ClCompile Include="PLCConnection.cpp" />
     <ClCompile Include="PLCDataManager.cpp" />
     <ClCompile Include="PLCDataPacket.cpp" />
     <ClCompile Include="PLCDataPacketManager.cpp" />
-    <ClCompile Include="PLCDataPacketManager1221.cpp" />
     <ClCompile Include="PLCDataPacketParam.cpp" />
+    <ClCompile Include="PLCModule.cpp" />
     <ClCompile Include="PLCModuleDefine.cpp" />
     <ClCompile Include="PLCOrderDataPacket.cpp" />
     <ClCompile Include="PLCReadDataPacket.cpp" />
     <ClCompile Include="PLCTool.cpp" />
+    <ClCompile Include="PLCUDPDataPacketManager.cpp" />
     <ClCompile Include="PLCWriteDataPacket.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -121,16 +123,18 @@
   <ItemGroup>
     <ClInclude Include="MemoryShare.h" />
     <ClInclude Include="PLCcommunicationDll.h" />
+    <ClInclude Include="PLCCommunicationManager.h" />
     <ClInclude Include="PLCConnection.h" />
     <ClInclude Include="PLCDataManager.h" />
     <ClInclude Include="PLCDataPacket.h" />
     <ClInclude Include="PLCDataPacketManager.h" />
-    <ClInclude Include="PLCDataPacketManager1221.h" />
     <ClInclude Include="PLCDataPacketParam.h" />
+    <ClInclude Include="PLCModule.h" />
     <ClInclude Include="PLCModuleDefine.h" />
     <ClInclude Include="PLCOrderDataPacket.h" />
     <ClInclude Include="PLCReadDataPacket.h" />
     <ClInclude Include="PLCTool.h" />
+    <ClInclude Include="PLCUDPDataPacketManager.h" />
     <ClInclude Include="PLCWriteDataPacket.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />

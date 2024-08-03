@@ -73,14 +73,14 @@ DWORD __stdcall CPLCModule::ThreadUpdate(LPVOID lpParameter)
 	return 0;
 }
 
-bool CPLCModule::setPLCCommunicationInfo(PLCConnectInfo receiveInfo, PLCConnectInfo sendInfo, PLCProtocolType type /* = PLC_UDP */)
+bool CPLCModule::setPLCCommunicationInfo(std::vector<PLCConnectInfo> connectInfos, PLCProtocolType type /* = PLC_UDP */)
 {
 	if (m_bIsStartThread)
 	{
 		return true;
 	}
 
-	return CPLCCommunicationManager::getInstance()->setPLCCommunicationInfo(receiveInfo, sendInfo, type);
+	return CPLCCommunicationManager::getInstance()->setPLCCommunicationInfo(connectInfos, type);
 }
 
 void CPLCModule::startThread()
@@ -158,4 +158,44 @@ bool CPLCModule::readPacketGetValue(int dataId, int readValue) const
 	}
 
 	return isSuccess;
+}
+
+bool CPLCModule::readBoolValue(CString address, bool *bValue)
+{
+	return CPLCCommunicationManager::getInstance()->readBoolValue(address, bValue);
+}
+
+bool CPLCModule::writeBoolValue(CString address, bool bValue)
+{
+	return CPLCCommunicationManager::getInstance()->writeBoolValue(address, bValue);
+}
+
+bool CPLCModule::readShortValue(CString address, short *shValue)
+{
+	return CPLCCommunicationManager::getInstance()->readShortValue(address, shValue);
+}
+
+bool CPLCModule::writeShortValue(CString address, short shValue)
+{
+	return CPLCCommunicationManager::getInstance()->writeShortValue(address, shValue);
+}
+
+bool CPLCModule::readIntValue(CString address, int *iValue)
+{
+	return CPLCCommunicationManager::getInstance()->readIntValue(address, iValue);
+}
+
+bool CPLCModule::writeIntValue(CString address, int iValue)
+{
+	return CPLCCommunicationManager::getInstance()->writeIntValue(address, iValue);
+}
+
+bool CPLCModule::readFloatValue(CString address, float *fValue)
+{
+	return CPLCCommunicationManager::getInstance()->readFloatValue(address, fValue);
+}
+
+bool CPLCModule::writeFloatValue(CString address, float fValue)
+{
+	return CPLCCommunicationManager::getInstance()->writeFloatValue(address, fValue);
 }

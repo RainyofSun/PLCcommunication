@@ -1,4 +1,93 @@
 #pragma once
+#include <stdint.h>
+
+///////////////////////////////// Modbus 定义 /////////////////////////////////////////
+#define  PLCConfigPath  "..\\Data\\Config\\AddressValid.dat"
+
+// 定义PLC从站位置 -- 会根据枚举数开辟缓存
+enum PLCMARK 
+{
+	PLC_0,
+	PLC_1,
+	PLC_MARK_NUM // 枚举数，不可直接使用
+};
+
+// 四种不同的变量储存区 X Y M D
+enum AddrType
+{
+	Addr_X = 0,
+	Addr_Y,
+	Addr_M,
+	Addr_D,
+	ADDR_TYPE_SUM
+};
+
+enum PLCValueType
+{
+	PLC_Value_bool = 0,
+	PLC_Value_int,
+	PLC_Value_short,
+	PLC_Value_float,
+	PLC_Value_double,
+	PLC_Value_uint8,
+	PLC_Value_uint16,
+};
+
+enum PLCOperateType
+{
+	PLC_Operation_Read = 0,
+	PLC_Operation_Write,
+};
+
+// 每次通讯 读取的地址数
+#define  COMM_READ_LENGTH 100
+// 最大读取次数
+#define  COMM_READ_MAX 80
+
+// 最大地址 （地址从0开始）
+#define  COMM_MAX_ADDR 8000
+#define  COMM_MAX_XY_ADDR 80
+
+struct sData
+{ 
+	bool b;
+	int i; 
+	short sh; 
+	float f; 
+	double db;
+	uint8_t uint8;
+	uint16_t uint16;
+};
+
+// VM Get/Set Value 时，使用的Key长度 PLC1-D-0015 （ Length == 11 )
+#define PLC_KEY_NAME_LENGTH 11
+
+struct sSetData
+{ 
+	PLCMARK mark;
+	AddrType type;
+	PLCValueType valueType;
+	bool b;
+	int i; 
+	short sh; 
+	float f; 
+	double db;
+	uint8_t uint8;
+	uint16_t uint16;
+};
+
+struct SplitDataStruct 
+{
+	PLCMARK mark;
+	AddrType type;
+	int address;
+	bool isValid;
+};
+
+//ERR DEFINE
+#define    PLC_SUCCESS                       0     //成功
+#define    PLC_CONNECT_FAIL                 -10   //网络连接失败
+#define    PLC_READ_FAIL                    -11   //读数据失败
 
 /// PLC 协议类型
 enum PLCProtocolType 
@@ -13,11 +102,14 @@ struct PLCConnectInfo
 {
 	CString ip;
 	int port;
+	// PLC标识，仅modbus使用
+	PLCMARK mark;
 
 	void initialization() 
 	{
 		ip = "";
 		port = 0;
+		mark = PLC_0;
 	}
 
 	PLCConnectInfo()
@@ -34,15 +126,6 @@ struct PLCConnectInfo
 /////////////////////////////////// 命令数据包定义 ///////////////////////////////////////
 #define ORDER_PACKET_ID 1					// 命令数据包ID
 #define ORDER_PACKET_SIZE 512				// 命令数据包数据最大量
-
-enum machine_type
-{
-	machine_type_test,
-	machine_type_6100 = 1,		// 6100 UDP通信方式（命令包与数据包合成一起发送）
-	machine_type_802,			// 1201 ADS通信方式（快速包与其他数据一起发送方式）
-	machine_type_1201,			// 1201 UDP通信方式（参数数据包按需发送，命令包一直发送）
-	machine_type_1221,			// 1221 UDP通信方式（参数数据包按需发送，命令包一直发送）
-};
 
 // 命令数据包
 struct OrderPackage

@@ -117,6 +117,12 @@
     <ClCompile Include="PLCModule.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ModbusConnect.cpp">
+      <Filter>源文件\Connect</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCModbusDataManager.cpp">
+      <Filter>源文件\DataManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PLCcommunicationDll.h">
@@ -175,6 +181,12 @@
     </ClInclude>
     <ClInclude Include="PLCModule.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ModbusConnect.h">
+      <Filter>头文件\Connect</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCModbusDataManager.h">
+      <Filter>头文件\DataManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

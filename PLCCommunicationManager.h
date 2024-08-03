@@ -16,11 +16,13 @@
  *----------------------------------------------------------------*/
 #pragma once
 #include <afxmt.h>
+#include <vector>
 #include "PLCModuleDefine.h"
 #include "PLCOrderDataPacket.h"
 #include "PLCWriteDataPacket.h"
 #include "PLCReadDataPacket.h"
 #include "PLCUDPDataPacketManager.h"
+#include "PLCModbusDataManager.h"
 
 class CPLCCommunicationManager
 {
@@ -33,13 +35,12 @@ public:
 	/**
 	 * 功能：设置连接信息
 	 * 输入：
-			param1: receiveInfo PLC接收的IP、Port
-			param2: sendInfo	PLC发送的IP、Port
-			param3: type		PLC协议(默认为UDP协议)
+			param1: connectInfo PLC接收的IP、Port 组, UDP 第一位 为接收IP、Port，第二组为发送IP、Port
+			param2: type		PLC协议(默认为UDP协议)
 	 * 输出：
 			（bool）是否设置成功
 	 */ 
-	bool setPLCCommunicationInfo(PLCConnectInfo receiveInfo, PLCConnectInfo sendInfo, PLCProtocolType type = PLC_UDP);
+	bool setPLCCommunicationInfo(std::vector<PLCConnectInfo> connectInfos, PLCProtocolType type = PLC_UDP);
 
 	/**
 	 * 功能：是否初始化成功 
@@ -94,6 +95,87 @@ public:
 	 */ 
 	bool update() const;
 
+	////////////////////////////////// Modbus 接口 ////////////////////////////////////////
+	/**
+	 * 功能：获取bool值
+	 * 输入：
+			param1: （CString）地址 "PLC0$M$102"
+			param2: （bool*）获取值
+	 * 输出：
+			（bool）是否获取成功
+	 */ 
+	bool readBoolValue(CString address, bool *bValue);
+
+	/**
+	 * 功能：写入Bool值
+	 * 输入：
+			param1: （CString）地址 "PLC0$M$102"
+			param2: （bool）写入值
+	 * 输出：
+			（bool）是否写入成功
+	 */ 
+	bool writeBoolValue(CString address, bool bValue);
+
+	/**
+	 * 功能：获取Short值
+	 * 输入：
+			param1: （CString）地址 "PLC0$M$102"
+			param2: （short*）获取值
+	 * 输出：
+			（bool）是否获取成功
+	 */ 
+	bool readShortValue(CString address, short *shValue);
+
+	/**
+	 * 功能：写入Short值
+	 * 输入：
+			param1: （CString）地址 "PLC0$M$102"
+			param2: （short）写入值
+	 * 输出：
+			（bool）是否写入成功
+	 */ 
+	bool writeShortValue(CString address, short shValue);
+	
+	/**
+	 * 功能：获取Int值
+	 * 输入：
+			param1: （CString）地址 "PLC0$M$102"
+			param2: （int*）获取值
+	 * 输出：
+			（bool）是否获取成功
+	 */ 
+	bool readIntValue(CString address, int *iValue);
+
+	/**
+	 * 功能：写入Int值
+	 * 输入：
+			param1: （CString）地址 "PLC0$M$102"
+			param2: （int）写入值
+	 * 输出：
+			（bool）是否写入成功
+	 */ 
+	bool writeIntValue(CString address, int iValue);
+
+	/**
+	 * 功能：获取Float值
+	 * 输入：
+			param1: （CString）地址 "PLC0$M$102"
+			param2: （float*）获取值
+	 * 输出：
+			（bool）是否获取成功
+	 */ 
+	bool readFloatValue(CString address, float *fValue);
+
+	/**
+	 * 功能：写入Float值
+	 * 输入：
+			param1: （CString）地址 "PLC0$M$102"
+			param2: （float）写入值
+	 * 输出：
+			（bool）是否写入成功
+	 */ 
+	bool writeFloatValue(CString address, float fValue);
+
 	static void release();
 
 private:
@@ -117,6 +199,9 @@ private:
 	};
 
 	static DataPacketManagerGarbo garbo;
+	
+	AddrType getAddressType(CString type);
+	SplitDataStruct spliteAddress(CString address);
 
 private:
 	// 唯一单实例对象指针

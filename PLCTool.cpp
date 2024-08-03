@@ -38,3 +38,19 @@ int CPLCTool::getBit( long lWord, int bitNum )
 
 	return nValue;
 }
+
+std::vector<CString> CPLCTool::SplitCString(CString strSource, CString ch /* = */ ) 
+{
+	std::vector<CString> vecString;
+	int iPos = 0;
+	CString strTmp;
+	strTmp = strSource.Tokenize(ch,iPos);
+
+	while(strTmp.Trim() != TEXT(""))
+	{
+		vecString.push_back(strTmp);
+		strTmp = strSource.Tokenize(ch,iPos);
+	}
+
+	return vecString;
+}

@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+
 class CPLCTool
 {
 public:
@@ -7,5 +9,6 @@ public:
 
 	static long reviseBit(long lWord, int bitNum, bool bValue);
 	static int getBit(long lWord, int bitNum);
+	static std::vector<CString> SplitCString(CString strSource, CString ch = "$");
 };
 

@@ -118,11 +118,6 @@ struct PLCConnectInfo
 	}
 };
 
-// *****UDP IP和端口号*****
-#define UDP_SEND_IP "192.168.1.250"			// UDP发送IP
-#define UDP_RECEIVE_IP "192.168.1.20"		// UDP接收IP
-#define UDP_PORT 5050						// UDP端口号
-
 /////////////////////////////////// 命令数据包定义 ///////////////////////////////////////
 #define ORDER_PACKET_ID 1					// 命令数据包ID
 #define ORDER_PACKET_SIZE 512				// 命令数据包数据最大量
